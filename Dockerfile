@@ -6,7 +6,7 @@ LABEL maintainer="Club CEDILLE"
 
 # Alpine packages installation & updates
 RUN apk update && \
-	apk add curl wget openssl unzip bash ca-certificates git python3 make --upgrade
+	apk add curl wget openssl unzip bash ca-certificates git python3 make colordiff --upgrade
 
 # ENV variables
 ENV KUSTOMIZE_VERSION=3.8.7 \
