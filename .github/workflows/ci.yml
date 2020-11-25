@@ -9,10 +9,6 @@ on:
     tags:
     - 'v[0-9]+.[0-9]+.[0-9]+'
 
-# env variables:
-  # GITHUB_REPOSITORY
-  # GITHUB_REF -> name of the branch/tag
-
 jobs:
   build:
     name: Build Docker image
@@ -25,7 +21,7 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=clubcedille/$GITHUB_REPOSITORY
+          DOCKER_IMAGE=$(echo $GITHUB_REPOSITORY | awk '{print tolower($0)}')
           VERSION=latest
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/v}
